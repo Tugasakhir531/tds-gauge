@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .ph {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="ph">
+        <h1>Ph</h1>
+        <canvas id="demo"></canvas>
+        <div id="preview-textfield"></div>
+
+    </div>
+
+
+
+
+    <script src="dist/gauge.js"></script>
+
+    <script>
+
+        var opts = {
+            // color configs
+            colorStart: "#6fadcf",
+            colorStop: void 0,
+            gradientType: 0,
+            strokeColor: "#e0e0e0",
+            generateGradient: true,
+            percentColors: [[0.0, "#a9d70b"], [0.50, "#f9c802"], [1.0, "#ff0000"]],
+            // customize pointer
+            pointer: {
+                length: 0.6,
+                strokeWidth: 0.035,
+                iconScale: 1.0
+            },
+            // static labels
+            staticLabels: {
+                font: "10px sans-serif",
+                labels: [],
+                fractionDigits: 0
+            },
+            // static zones
+            staticZones: [
+                { strokeStyle: "red", min: 0, max: 3 },
+                { strokeStyle: "yellow", min: 3, max: 6 },
+                { strokeStyle: "green", min: 6, max: 8 },
+                { strokeStyle: "blue", min: 8, max: 11 },
+                { strokeStyle: "purple", min: 11, max: 14 }
+            ],
+
+
+
+
+        };
+        var target = document.getElementById('demo');
+        var gauge = new Gauge(target).setOptions(opts);
+
+        document.getElementById("preview-textfield").className = "preview-textfield";
+        gauge.setTextField(document.getElementById("preview-textfield"));
+
+        gauge.maxValue = 14;
+        gauge.setMinValue(0);
+        gauge.set(3);
+
+        gauge.animationSpeed = 32
+    </script>
+
+
+</body>
+
+</html>
